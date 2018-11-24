@@ -1,5 +1,17 @@
 # lidar_camera_calib
 
+### 图像提取标定板角点libcbdetect
+
+ opencv提取标定板的方法和 [camodocal](https://github.com/hengli/camodocal) 提取标定板对图像有一定要求，而[LIBCBDETECT](http://www.cvlibs.net/software/libcbdetect/)几乎可以百分百提取出标定板。所以用的是matlab版的libcbdetect。cpp版本的有人写过，但是不完整，还未完全实现（[参考](https://github.com/onlyliucat/Multi-chessboard-Corner-extraction-detection-)）。
+
+![libcbdetect](./pic/0.jpg)
+
+### 激光提取标定板角点ilcc2
+
+参考[ILCC](https://github.com/mfxox/ILCC)
+
+这里重新用cpp实现。
+
 ### 激光投影回相机效果
 
 ![室内1](./pic/1.png)
