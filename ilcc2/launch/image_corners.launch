@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ilcc2" type="get_image_corners_bag" name="get_image_corners_bag" output="screen">
+
+    <param name="bag_path_prefix"  value= "/home/ha/record/camera_lidar_calib/calib_" />
+    <param name="bag_num"  value= "6" />
+
+    <param name="camera_name"  value= "car_left" />
+    <param name="image_topic"  value= "/ged231/image/frontleft" />
+    <param name="yaml_path"  value= "car_left.yaml" />
+
+    <param name="save_image_flag"  value= "true" />
+
+
+  </node>
+
+
+</launch>
+

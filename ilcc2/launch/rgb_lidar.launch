@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ilcc2" type="rgblidar" name="rgblidar" output="screen">
+
+     <param name="distance_valid"         value="80" />
+     <param name="extrinsic_file"         value="/config/front.bin" />
+
+    <param name="yaml_path"  value= "front.yaml" />
+
+    <param name="image_topic"  value= "/ged32/image/front" />
+    <param name="lidar_topic"  value= "/velodyne_points" />
+
+  </node>
+
+
+</launch>
+

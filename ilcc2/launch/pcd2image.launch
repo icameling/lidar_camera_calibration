@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ilcc2" type="pcd2image" name="pcd2image" output="screen">
+
+     <param name="distance_valid"         value="80" />
+     <param name="extrinsic_file"         value="/config/car_left.bin" />
+
+    <param name="yaml_path"  value= "car_left.yaml" />
+
+    <param name="image_topic"  value= "/ged231/image/frontleft" />
+    <param name="lidar_topic"  value= "/velodyne_points" />
+
+  </node>
+
+
+</launch>
+

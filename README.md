@@ -1,37 +1,50 @@
 # lidar_camera_calib
 
-#### 项目介绍
-标定激光和相机的外参
+### 激光投影回相机效果
 
-#### 软件架构
-软件架构说明
+![室内1](./pic/1.png)
 
+![室内2](./pic/2.png)
 
-#### 安装教程
+![室内3](./pic/3.png)
 
-1. xxxx
-2. xxxx
-3. xxxx
+### 相机投影到激光
 
-#### 使用说明
+![激光rgb](./pic/4.png)
 
-1. xxxx
-2. xxxx
-3. xxxx
+![激光rgb](./pic/5.png)
 
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+![激光rgb](./pic/6.png)
 
 
-#### 码云特技
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+
+
+### 提交代码
+
+https://gitee.com/help/articles/4122
+
+
+```
+git clone https://gitee.com/用户个性地址/HelloGitee.git #将远程仓库克隆到本地
+```
+修改代码后，在仓库目录下执行下面命令
+
+```
+$ git add . #将当前目录所有文件添加到git暂存区
+$ git commit -m "my first commit" #提交并备注提交信息
+$ git push origin master #将本地提交推送到远程仓库
+```
+
+//从远程的origin仓库的master分支下载代码到本地的origin master
+```
+git fetch origin master
+```
+
+
+### git pull 与 git fetch的区别
+git pull命令的作用是：取回远程主机某个分支的更新，再与本地的指定分支合并。
+
+一句话总结git pull和git fetch的区别：git pull = git fetch + git merge
+
+git fetch不会进行合并执行后需要手动执行git merge合并分支，而git pull拉取远程分之后直接与本地分支进行合并。更准确地说，git pull使用给定的参数运行git fetch，并调用git merge将检索到的分支头合并到当前分支中。

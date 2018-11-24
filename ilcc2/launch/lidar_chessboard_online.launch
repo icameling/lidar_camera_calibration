@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ilcc2" type="lidar_chessboard_online" name="lidar_chessboard_online" output="screen">
+
+     <param name="extrinsic_file"         value="/config/front.bin" />
+
+    <param name="yaml_path"  value= "front.yaml" />
+
+    <param name="image_topic"  value= "/ged32/image/front" />
+    <param name="lidar_topic"  value= "/velodyne_points" />
+    <param name="camera_name"  value= "front" />
+
+    <param name="gray_zone_rate"  value= "2.4" />
+
+  </node>
+
+
+</launch>
+
