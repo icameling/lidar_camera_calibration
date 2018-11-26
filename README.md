@@ -2,7 +2,7 @@
 
 ### 图像提取标定板角点libcbdetect
 
- opencv提取标定板的方法和 [camodocal](https://github.com/hengli/camodocal) 提取标定板对图像有一定要求，而[LIBCBDETECT](http://www.cvlibs.net/software/libcbdetect/)几乎可以百分百提取出标定板。所以用的是matlab版的libcbdetect。cpp版本的有人写过，但是不完整，还未完全实现（[参考](https://github.com/onlyliucat/Multi-chessboard-Corner-extraction-detection-)）。
+ opencv提取标定板的方法和 [camodocal](https://github.com/hengli/camodocal) 提取标定板对图像有一定要求，而[LIBCBDETECT](http://www.cvlibs.net/software/libcbdetect/)几乎可以百分百提取出标定板。所以用的是matlab版的libcbdetect。cpp版本[在这里](https://gitee.com/csc105_slam_group/libcbdetect_cpp)。
 
 ![libcbdetect](./pic/0.jpg)
 
