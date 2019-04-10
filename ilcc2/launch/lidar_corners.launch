@@ -3,14 +3,14 @@
 
   <node pkg="ilcc2" type="get_lidar_corners" name="get_lidar_corners" output="screen">
 
-    <param name="bag_path_prefix"  value= "/home/ha/record/panduola_1119/front/2018-11-19-" />
-    <param name="bag_num"  value= "6" />
+    <param name="bag_path_prefix"  value= "/home/ha/record/pointGrey/2018-12-03-" />
+    <param name="bag_num"  value= "7" />
 
     <param name="lidar_topic"  value= "/velodyne_points" />
 
 
-    <param name="camera_name"  value= "front" />
-    <param name="yaml_path"  value= "front.yaml" />
+    <param name="camera_name"  value= "pointgrey" />
+    <param name="yaml_path"  value= "pointgrey.yaml" />
 
 
   </node>

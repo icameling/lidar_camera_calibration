@@ -304,14 +304,58 @@ void ImageCornersEst::extrinsic2txt(std::string savefile, Eigen::Matrix4d lidar2
   outfile.write((const char*)&lidar2cam, sizeof(Eigen::Matrix4d));
   outfile.close();
 }
+//void ImageCornersEst::txt2extrinsic(std::string filepath)
+//{
+//    Eigen::Matrix4d lidar2imu, lidar2cam, imu2cam;
+////    imu2cam << -0.99927393, -0.03500139, -0.01505043, 0.12083473,
+////                0.01431119, 0.02127604, -0.99967121, -0.48445726,
+////                 0.03531009, -0.99916076, -0.02075968, 0.04976994,
+////                 0.,          0.,          0. ,         1.;
 
+////    lidar2imu <<    0.99773566 ,-0.0304899, 0.05994924, 0.06959133,
+////                     0.03146003 ,0.99938782 ,-0.01530552, 0.07725167,
+////                   -0.05944587, 0.01715687, 0.99808408, -0.51335252,
+////                  0.,          0.,          0. ,         1.;
+
+//    imu2cam <<-0.99915274 ,-0.03940741 ,-0.01186795, 0.10650074,
+//              0.01202265 ,-0.00369103, -0.99992091, -0.06539255,
+//              0.03936049, -0.99921641 ,0.00416168 ,0.01751488,
+//                 0.,          0.,          0. ,         1.;
+
+//    lidar2imu <<0.99680228, -0.06535214, 0.04598159, 0.08182204,
+//                  0.06442578, 0.9976941, 0.02134946, 0.07283407,
+//                 -0.04727079 ,-0.01831879 ,0.99871412, -0.11007261,
+//                  0.,          0.,          0. ,         1.;
+
+//    Eigen::Isometry3d T_imu2cam = Eigen::Isometry3d::Identity();
+//    T_imu2cam.rotate(imu2cam.block<3,3>(0,0));
+//    T_imu2cam.pretranslate(imu2cam.block<3,1>(0,3));
+
+//    Eigen::Isometry3d T_lidar2imu = Eigen::Isometry3d::Identity();
+//    T_lidar2imu.rotate(lidar2imu.block<3,3>(0,0));
+//    T_lidar2imu.pretranslate(lidar2imu.block<3,1>(0,3));
+
+
+//    Eigen::Isometry3d T_lidar2cam_temp = Eigen::Isometry3d::Identity();
+//    T_lidar2cam_temp =  T_imu2cam * T_lidar2imu;
+////    T_lidar2cam_temp.rotate(lidar2cam.block<3,3>(0,0));
+////    T_lidar2cam_temp.pretranslate(lidar2cam.block<3,1>(0,3));
+
+//    m_R = T_lidar2cam_temp.rotation();
+//    m_t = T_lidar2cam_temp.translation();
+
+//    T_lidar2cam = T_lidar2cam_temp;
+
+//    std::cout << "cam2lidar: \n" << T_lidar2cam_temp.inverse().matrix() << std::endl;
+
+//}
 void ImageCornersEst::txt2extrinsic(std::string filepath)
 {
     Eigen::Matrix4d lidar2cam;
     std::ifstream infile(filepath, std::ios_base::binary);
     infile.read((char*)&lidar2cam, sizeof(Eigen::Matrix4d));
     infile.close();
-    std::cout << lidar2cam << std::endl;
+    std::cout << "lidar2cam\n" << lidar2cam << std::endl;
 
     Eigen::Isometry3d T_lidar2cam_temp = Eigen::Isometry3d::Identity();
     T_lidar2cam_temp.rotate(lidar2cam.block<3,3>(0,0));
@@ -321,6 +365,8 @@ void ImageCornersEst::txt2extrinsic(std::string filepath)
     m_t = lidar2cam.block<3,1>(0,3);
 
     T_lidar2cam = T_lidar2cam_temp;
+
+    std::cout << "cam2lidar: \n" << T_lidar2cam_temp.inverse().matrix() << std::endl;
 
 }
 

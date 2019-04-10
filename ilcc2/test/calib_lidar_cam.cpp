@@ -15,7 +15,7 @@
 void show_pcd_corners(std::vector<Eigen::Vector3d> point3d,
                       std::vector<cv::Point2d> point2d) {
 
-    cv::Mat img_show(2200, 2000, CV_8UC3, cv::Scalar::all(0));
+    cv::Mat img_show(2200, 2000, CV_8UC3, cv::Scalar::all(125));
     //cv::rectangle(img_show,cv::Point(0,0), cv::Point(img_show.cols, img_show.rows), CV_RGB(255,255,255));
 
     for (uint i = 0; i < point3d.size(); i++)
@@ -40,7 +40,7 @@ void show_pcd_corners(std::vector<Eigen::Vector3d> point3d,
     }
 
     cv::resize(img_show, img_show, cv::Size(img_show.cols*0.5, img_show.rows*0.5));
-    cv::imshow("lidar corners", img_show);
+    cv::imshow("lidar and camera corners", img_show);
     cv::waitKey(0);
     cv::destroyAllWindows();
 }
@@ -50,7 +50,7 @@ void show_pcd_corners(std::vector<Eigen::Vector3d> point3d,
 Eigen::Isometry3d get_lidar2cam_axis_roughly(std::string cam_name){
 
   Eigen::AngleAxisd R_lidarToCamera;
-  if(cam_name == "front" || cam_name == "car_left")
+  if(cam_name == "front" || cam_name == "car_left" || cam_name == "pointgrey")
     R_lidarToCamera = Eigen::AngleAxisd(-1.57, Eigen::Vector3d::UnitY())
                      *Eigen::AngleAxisd(1.57, Eigen::Vector3d::UnitX());
   if(cam_name == "left")
@@ -160,6 +160,8 @@ int main(int argc, char **argv)
 
 
     T_lidar2cam = T_lidar2cam * T_lidar2cam_axis_roughly;
+    std::cout << "lidar2cam:\n" << T_lidar2cam.matrix() << std::endl;
+    std::cout << "cam2lidar:\n" << T_lidar2cam.inverse().matrix() << std::endl;
     image_corners_est->extrinsic2txt(package_path+"/config/"+pose_file, T_lidar2cam.matrix());
 
 
@@ -167,7 +169,9 @@ int main(int argc, char **argv)
       cv::Mat image = m_images.at(i);
       //cv::cvtColor(m_images.at(i), image, CV_GRAY2RGB);
       image_corners_est->show_calib_result(lidar_corners_piece.at(i), image_corners_piece.at(i), image);
-      cv::imshow(std::to_string(i), image);
+
+      cv::resize(image, image, cv::Size(image.cols/2, image.rows/2));
+      cv::imshow(std::to_string(i+1), image);
       cv::waitKey(0);
     }
 

@@ -54,7 +54,7 @@ void processData(cv::Mat image, pcl::PointCloud<pcl::PointXYZI>::Ptr cloud){
   inten_high = 60;
 
 
-  std::cout<<"start project "<< cloud->size() << " ,  ";
+//  std::cout<<"start project "<< cloud->size() << " ,  ";
   int counter = 0;
   for(unsigned int index=0; index<cloud->size(); index++){
 
@@ -82,8 +82,8 @@ void processData(cv::Mat image, pcl::PointCloud<pcl::PointXYZI>::Ptr cloud){
       counter++;
     }
   }
-  std::cout << counter << " points ok\n";
-  cv::resize(rectifyImage, rectifyImage, cv::Size(rectifyImage.cols/1.5, rectifyImage.rows/1.5));
+//  std::cout << counter << " points ok\n";
+  cv::resize(rectifyImage, rectifyImage, cv::Size(rectifyImage.cols/1, rectifyImage.rows/1));
   cv::imshow("img_liar_point", rectifyImage);
   cv::waitKey(5);
 }
@@ -120,7 +120,7 @@ int main(int argc, char** argv){
   ros::NodeHandle nh_private("~");
 
   nh_private.param<double>("distance_valid", distance_valid, 5);
-  nh_private.param<std::string>("extrinsic_file", extrinsic_file, "/process_data_backup/pose.bin");
+  nh_private.param<std::string>("extrinsic_file", extrinsic_file, "/process_data/pose.bin");
   nh_private.param<std::string>("yaml_path", yaml_path, "30w.yaml");
   nh_private.param<std::string>("image_topic", image_topic, "/front");
   nh_private.param<std::string>("lidar_topic", lidar_topic, "/velodyne_points");
@@ -134,12 +134,12 @@ int main(int argc, char** argv){
   image_corners_est->txt2extrinsic( extrinsic_path );
 
   message_filters::Subscriber<sensor_msgs::PointCloud2> cloud_sub(nh, lidar_topic, 2);
-  message_filters::Subscriber<sensor_msgs::Image> image_sub(nh, image_topic, 5);
+  message_filters::Subscriber<sensor_msgs::Image> image_sub(nh, image_topic, 2);
 
   typedef sync_policies::ApproximateTime<sensor_msgs::PointCloud2, sensor_msgs::Image> MySyncPolicy;
-  Synchronizer<MySyncPolicy> sync(MySyncPolicy(5), cloud_sub, image_sub);
+  Synchronizer<MySyncPolicy> sync(MySyncPolicy(2), cloud_sub, image_sub);
   sync.registerCallback(boost::bind(&callback_LidarCam, _1, _2));
-  ROS_INFO("waiting for lidar image topic");
+  ROS_INFO("waiting for lidar image topic %s %s", lidar_topic.c_str(), image_topic.c_str());
 
 
   while (ros::ok())

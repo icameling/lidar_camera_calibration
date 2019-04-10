@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="ilcc2" type="calib_lidar_cam" name="calib_lidar_cam" output="screen">
+
+    <param name="bag_num"  value= "6" />
+
+    <param name="camera_name"  value= "pointgrey" />
+
+    <param name="yaml_path"  value= "pointgrey.yaml" />
+
+    <param name="pose_file"  value= "pointgreybin" />
+
+
+  </node>
+
+
+</launch>
+

@@ -128,7 +128,7 @@ bool LidarCornersEst::EuclideanCluster()
 
   std::vector<pcl::PointIndices> cluster_indices;
   pcl::EuclideanClusterExtraction<myPoint> ec;   //欧式聚类对象
-  ec.setClusterTolerance (0.1);                     // 设置近邻搜索的搜索半径为0.1m
+  ec.setClusterTolerance (0.12);                     // 设置近邻搜索的搜索半径为0.1m
   ec.setMinClusterSize (100);                 //设置一个聚类需要的最少的点数目为100
   ec.setMaxClusterSize (25000);               //设置一个聚类需要的最大点数目为25000
   ec.setSearchMethod (tree);                    //设置点云的搜索机制
@@ -368,7 +368,7 @@ void LidarCornersEst::PCA()
   myPointCloud::Ptr PCA_cloud(new myPointCloud);
   transformbyPCA(m_cloud_chessboard, PCA_cloud);
 
-  m_gray_zone = get_gray_zone(m_cloud_chessboard, 3.0);
+  m_gray_zone = get_gray_zone(m_cloud_chessboard, 2.5);
 }
 
 bool LidarCornersEst::get_corners(std::vector<Eigen::Vector3d> &corners)

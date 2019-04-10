@@ -5,11 +5,11 @@
 
     <param name="bag_num"  value= "6" />
 
-    <param name="camera_name"  value= "car_left" />
+    <param name="camera_name"  value= "pointgrey" />
 
-    <param name="yaml_path"  value= "car_left.yaml" />
+    <param name="yaml_path"  value= "pointgrey.yaml" />
 
-    <param name="pose_file"  value= "car_left.bin" />
+    <param name="pose_file"  value= "pointgrey2.bin" />
 
 
   </node>

@@ -183,25 +183,25 @@ int main(int argc, char **argv)
               lidar_corners_est->setROI(pointcloud.makeShared(), click_point);
 
               //lidar_corners_est->min_cut_segmentation();
-              lidar_corners_est->EuclideanCluster();
-              break;
-//              if( lidar_corners_est->EuclideanCluster() )
-//              {
-//                  lidar_corner.clear();
-//                  lidar_corners_est->PCA();
-//                  publish_cloud(pubLaserChessBoard, lidar_corners_est->m_cloud_chessboard);
-//                  publish_cloud(pubLaserPCA, lidar_corners_est->m_cloud_PCA);
-//                  if(lidar_corners_est->get_corners(lidar_corner))
-//                  {
-//                      ROS_WARN("add_corner");
-//                      std::string savepath = package_path+"/process_data/"+camera_name+"_lidar_"+std::to_string(bag_idx)+".txt";
-//                      save_corners2txt(lidar_corners_est->m_cloud_corners, savepath);
+//              lidar_corners_est->EuclideanCluster();
+//              break;
+              if( lidar_corners_est->EuclideanCluster() )
+              {
+                  lidar_corner.clear();
+                  lidar_corners_est->PCA();
+                  publish_cloud(pubLaserChessBoard, lidar_corners_est->m_cloud_chessboard);
+                  publish_cloud(pubLaserPCA, lidar_corners_est->m_cloud_PCA);
+                  if(lidar_corners_est->get_corners(lidar_corner))
+                  {
+                      ROS_WARN("add_corner");
+                      std::string savepath = package_path+"/process_data/"+camera_name+"_lidar_"+std::to_string(bag_idx)+".txt";
+                      save_corners2txt(lidar_corners_est->m_cloud_corners, savepath);
 
-//                      publish_cloud(pubLaserOptim, lidar_corners_est->m_cloud_optim);
-//                      publish_cloud(pubLaserCorners, lidar_corners_est->m_cloud_corners);
-//                  }
-//                  break;
-//              }
+                      publish_cloud(pubLaserOptim, lidar_corners_est->m_cloud_optim);
+                      publish_cloud(pubLaserCorners, lidar_corners_est->m_cloud_corners);
+                  }
+                  break;
+              }
           }
 
           pubLaserCloud.publish(Ponitfilted2);
