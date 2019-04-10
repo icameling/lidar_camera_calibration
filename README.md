@@ -1,5 +1,7 @@
 # lidar_camera_calib
 
+[TOC]
+
 ### 1.基本思想
 
 提取图像上标定板的像素坐标,在对应的激光帧中提取标定板的3D角点位置,解决一个2D-3D算Rt的问题.图像上提取角点用 [libcbdetect](http://www.cvlibs.net/software/libcbdetect/),激光数据中提标定板参考[ILCC方法](https://github.com/mfxox/ILCC),这个方法对标定板要求比较高,要求激光在标定板白色区域与黑色区域的反射强度区别明显.下面我用标定pointGrey相机与velodyne16线为例,说明实验流程.
@@ -196,7 +198,7 @@ Eigen::Isometry3d get_lidar2cam_axis_roughly(std::string cam_name){
 
 
 
-<img src="./pic/lidar_camera_corners1.png" width="40%"/><img src="./pic/lidar_camera_corners2.png" width="40%"/>
+<img src="./pic/lidar_camera_corners1.png" width="40%"/> <img src="./pic/lidar_camera_corners2.png" width="40%"/>
 
 若初始外参设置正确,在`lidar_camera_corners`窗口中可以看到绿色相机角点与红色激光角点.该主要是为了确保lidar角点与相机角点的对应关系一致,只要红色点和绿色的排序方式一样即可(一般不会出问题,按任意键跳过即可).
 
