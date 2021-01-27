@@ -1,5 +1,7 @@
 # lidar_camera_calib
 
+仅供学习参考使用。
+
 [TOC]
 
 ### 1.基本思想
