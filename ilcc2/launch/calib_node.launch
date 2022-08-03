@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- <node pkg="ilcc2" type="calib_node" name="$(anon odometry_node)" output="screen" clear_params="true" 
+          launch-prefix="gdb -ex run &#45;&#45;args"> -->
+  <!-- <node pkg="ilcc2" type="calib_node" name="$(anon odometry_node)" output="screen"> -->
+
+  <node pkg="ilcc2" type="calib_node" name="calib_node" output="screen">
+    <param name="cloud_max_distance"  value= "30" />
+    <param name="yaml_path"           value= "cam_intrinsic.yaml" />
+    <param name="image_topic"         value= "/camera_image" />
+    <param name="lidar_topic"         value= "/pandar_points" />
+  </node>
+
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen"/>
+
+</launch>
+

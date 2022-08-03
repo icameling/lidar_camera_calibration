@@ -1,0 +1,15 @@
+%YAML:1.0
+
+K: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [868.017757,0.0,629.293010,0.0,866.735606,305.785178,0.0,0.0,1]
+d: !!opencv-matrix
+   rows: 5
+   cols: 1
+   dt: d
+   data: [-0.354172,0.084418,0.005894,0.001230, 0]
+
+Camera.width: 1280
+Camera.height: 720
